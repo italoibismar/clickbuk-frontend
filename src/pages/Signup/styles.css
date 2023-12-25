@@ -1,0 +1,6 @@
+.bg-signup {
+    background: url(../../assets/images/bg-signup.jpg) no-repeat;
+    -o-object-fit: cover;
+    object-fit: cover;
+    background-size: cover;
+}

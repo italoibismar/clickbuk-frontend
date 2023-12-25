@@ -1,0 +1,6 @@
+.react-tabs__tab--selected{
+  background: var(--primary-500)!important;
+  color: white!important;
+  font-weight: 600!important;
+  font-size: 14px!important;
+}

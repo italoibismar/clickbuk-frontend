@@ -1,0 +1,35 @@
+#layout {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 240px 1fr 480px; /* Define as colunas */
+    grid-template-rows: 100vh; /* Define a linha */
+    grid-template-areas: "left content right"; /* Define as áreas */
+}
+
+.sidebar {
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+
+#left-sidebar {
+    grid-area: left; /* Define a área da sidebar esquerda */
+}
+
+.content {
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-y: overlay;
+    max-height: 100vh;
+    grid-area: content; /* Define a área da content */
+}
+
+#right-sidebar {
+    grid-area: right; /* Define a área da sidebar direita */
+}
+
+@media only screen and (max-width: 1180px) {
+    #layout {
+        grid-template-columns: 100px 1fr 480px; /* Largura da sidebar esquerda para tablet */
+    }
+}
