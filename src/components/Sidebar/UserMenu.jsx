@@ -22,14 +22,14 @@ const UserMenu = () => {
                     <DropdownMenu.Trigger asChild>
                         <div className="cursor-pointer flex justify-center items-center text-xl h-14 w-14 bg-primary-500/10 dark:bg-primary-500/[10%] rounded-full">
                             <span className="font-semibold tracking-[0.2px] text-primary-500 dark:text-primary-500">
-                                {(user.first_name && user.first_name.substr(0, 2).toUpperCase())}
+                                {(user.name && user.name.substr(0, 2).toUpperCase())}
                             </span>
                         </div>
                     </DropdownMenu.Trigger>
                     <DropdownMenu.Portal>
                         <DropdownMenu.Content className="bg-white dark:bg-primary-950 w-[232px] drop-shadow-xl dark:drop-shadow-lg dark:border dark:border-primary-900 absolute z-20 bottom-0 left-10 py-2 rounded-xl" sideOffset={5}>
                         <div className='flex flex-col px-4 py-2'>
-                            <strong className='text-gray-900 dark:text-gray-50 font-bold text-base tracking-[0.2px]'>{user.first_name} {user.last_name}</strong>
+                            <strong className='text-gray-900 dark:text-gray-50 font-bold text-base tracking-[0.2px]'>{user.name}</strong>
                             <span className='text-xs text-gray-600 dark:text-gray-500 mt-1 font-medium tracking-[0.4px]'>{user.email}</span>
                         </div>
                         <DropdownMenu.Separator className="w-[85%] m-auto h-[1px] bg-gray-200 dark:bg-white/[8%] my-2" />
@@ -68,10 +68,10 @@ const UserMenu = () => {
                 <div className="flex items-center gap-2">
                     <div className="flex justify-center items-center text-lg h-10 w-10 bg-primary-500/10 dark:bg-primary-500/[10%] rounded-full">
                         <span className="font-semibold tracking-[0.2px] text-primary-500 dark:text-primary-500">
-                            {(user.first_name && user.first_name.substr(0, 2).toUpperCase())}
+                            {(user.name && user.name.substr(0, 2).toUpperCase())}
                         </span>
                     </div>
-                    <span className="text-gray-600 dark:text-gray-300 text-sm font-medium">Olá, {user.first_name}</span>
+                    <span className="text-gray-600 dark:text-gray-300 text-sm font-medium">Olá, {user.name.split(" ")[0]}</span>
                 </div>
                 <div className="relative">
                     <UserMenuDropdown />

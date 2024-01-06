@@ -11,7 +11,7 @@ import Icon from '../Icons/Icon';
 import { useNavigate } from 'react-router-dom';
 
 const UserMenuDropdown = () => {
-    const { email, first_name, last_name } = JSON.parse(localStorage.getItem("user"));
+    const { email, name } = JSON.parse(localStorage.getItem("user"));
 
     const { logout } = useContext(AuthContext);
     const { theme, setTheme } = useTheme();
@@ -28,7 +28,7 @@ const UserMenuDropdown = () => {
             <DropdownMenu.Portal>
                 <DropdownMenu.Content className="bg-white dark:bg-primary-950 w-[232px] drop-shadow-xl dark:drop-shadow-lg dark:border dark:border-primary-900 absolute z-20 bottom-0 left-10 py-2 rounded-xl" sideOffset={5}>
                 <div className='flex flex-col px-4 py-2'>
-                    <strong className='text-gray-900 dark:text-gray-50 font-bold text-base tracking-[0.2px]'>{first_name} {last_name}</strong>
+                    <strong className='text-gray-900 dark:text-gray-50 font-bold text-base tracking-[0.2px]'>{name}</strong>
                     <span className='text-xs text-gray-600 dark:text-gray-500 mt-1 font-medium tracking-[0.4px]'>{email}</span>
                 </div>
                 <DropdownMenu.Separator className="w-[85%] m-auto h-[1px] bg-gray-200 dark:bg-white/[8%] my-2" />

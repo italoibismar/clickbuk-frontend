@@ -26,37 +26,6 @@ const SignUp = () => {
                 
                 <form onSubmit={handleSubmit} className="max-w-[440px] w-full mx-auto mt-10">
                     <div className="flex flex-col gap-4">
-                        <div className="grid grid-cols-2 gap-4">
-                            <Controller 
-                                control={control}
-                                name="firstName"
-                                defaultValue=""
-                                render={({ field: { onChange, value } }) => (
-                                    <Input 
-                                        value={value}
-                                        onChange={onChange}
-                                        error={errors.firstName?.message}
-                                        placeholder="Primeiro nome" 
-                                        type="text"
-                                    />
-                                )}
-                            />
-
-                            <Controller 
-                                control={control}
-                                name="lastName"
-                                defaultValue=""
-                                render={({ field: { onChange, value } }) => (
-                                    <Input 
-                                        value={value}
-                                        onChange={onChange}
-                                        error={errors.lastName?.message}
-                                        placeholder="Último nome" 
-                                        type="text"
-                                    />
-                                )}
-                            />
-                        </div>
                         <Controller 
                             control={control}
                             name="email"
@@ -66,8 +35,22 @@ const SignUp = () => {
                                     value={value}
                                     onChange={onChange}
                                     error={errors.email?.message}
-                                    placeholder="Digite seu e-mail" 
+                                    placeholder="Seu e-mail" 
                                     type="email"
+                                />
+                            )}
+                        />
+                        <Controller 
+                            control={control}
+                            name="name"
+                            defaultValue=""
+                            render={({ field: { onChange, value } }) => (
+                                <Input 
+                                    value={value}
+                                    onChange={onChange}
+                                    error={errors.name?.message}
+                                    placeholder="Seu nome" 
+                                    type="text"
                                 />
                             )}
                         />
@@ -80,7 +63,7 @@ const SignUp = () => {
                                     value={value}
                                     onChange={onChange}
                                     error={errors.password?.message}
-                                    placeholder="Digite sua senha" 
+                                    placeholder="Sua senha" 
                                     variant="password"
                                 />
                             )}
@@ -94,7 +77,7 @@ const SignUp = () => {
                                     value={value}
                                     onChange={onChange}
                                     error={errors.confirmPassword?.message}
-                                    placeholder="Confirmar senha" 
+                                    placeholder="Confirme sua senha" 
                                     variant="password"
                                 />
                             )}

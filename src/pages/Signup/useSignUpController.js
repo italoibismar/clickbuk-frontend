@@ -7,8 +7,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const schema = z.object({
-    firstName: z.string().nonempty("Informe o primeiro nome"),
-    lastName: z.string().nonempty("Informe o último nome"),
+    name: z.string().nonempty("Informe o primeiro nome"),
     email: z.string().nonempty("Informe o e-mail").email("Insira um e-mail válido"),
     password: z.string().nonempty("Informe a senha").min(6, "A senha deve ter no mínimo 6 caracteres").max(32, "A senha deve ter no máximo 32 caracteres"),
     confirmPassword: z.string().nonempty("Informe a senha")
@@ -34,8 +33,7 @@ export function useSignUpController(){
     const handleSubmit = hookFormSubmit(async data => {
         try {
             await mutateAsync({
-                firstName: data.firstName,
-                lastName: data.lastName,
+                name: data.name,
                 email: data.email,
                 password: data.confirmPassword
             });

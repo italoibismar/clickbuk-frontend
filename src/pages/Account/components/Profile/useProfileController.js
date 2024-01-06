@@ -7,9 +7,8 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const schema = z.object({
-    email: z.string().nonempty("Informe o e-mail").email("Insira um e-mail válido"),
-    firstName: z.string().nonempty("Informe o primeiro nome"),
-    lastName: z.string().nonempty("Informe o último nome")
+    name: z.string().nonempty("Informe o nome"),
+    email: z.string().nonempty("Informe o e-mail").email("Insira um e-mail válido")
 })
 
 export function useProfileController() {
@@ -24,9 +23,8 @@ export function useProfileController() {
     } = useForm({
         resolver: zodResolver(schema),
         defaultValues: {
-            email: user?.email,
-            firstName: user?.first_name,
-            lastName: user?.last_name
+            name: user?.name,
+            email: user?.email
         }
     });
 
@@ -40,11 +38,10 @@ export function useProfileController() {
         try {
             await updateProfile({
                 id: id,
-                email: data.email,
-                first_name: data.firstName,
-                last_name: data.lastName,
+                name: data.name,
+                email: data.email
             });
-            var user = {id: id, first_name: data.firstName, last_name: data.lastName, email: data.email};
+            var user = {id: id, name: data.name, email: data.email};
             localStorage.setItem("user", JSON.stringify(user));
             navigate(0);
 

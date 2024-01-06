@@ -14,41 +14,22 @@ const Profile = () => {
         <form onSubmit={handleSubmit} className="p-8 rounded-xl bg-white dark:bg-white/[3%] flex flex-col gap-8">
             <h4 className="text-2xl font-bold text-gray-900 dark:text-gray-50">Dados do perfil</h4>
             <div className="flex flex-col gap-6">
-                <div className="grid grid-cols-2 gap-6">
-                    <Controller 
-                        control={control}
-                        name="firstName"
-                        defaultValue=""
-                        render={({ field: { value, onChange } }) => (
-                            <Input
-                                variant="normal" 
-                                label="Primeiro nome" 
-                                value={value}
-                                onChange={onChange}
-                                error={errors.firstName?.message}
-                                type="text"
-                            />
+            <Controller 
+                    control={control}
+                    name="name"
+                    defaultValue=""
+                    render={({ field: { value, onChange } }) => (
+                        <Input
+                            variant="normal" 
+                            label="Nome" 
+                            value={value}
+                            onChange={onChange}
+                            error={errors.name?.message}
+                            type="text"
+                        />
 
-                        )}
-                    />
-                    <Controller 
-                        control={control}
-                        name="lastName"
-                        defaultValue=""
-                        render={({ field: { value, onChange } }) => (
-                            <Input
-                                variant="normal" 
-                                label="Último nome" 
-                                value={value}
-                                onChange={onChange}
-                                error={errors.lastName?.message}
-                                type="text"
-                            />
-
-                        )}
-                    /> 
-                    
-                </div>
+                    )}
+                />
                 <Controller 
                     control={control}
                     name="email"
