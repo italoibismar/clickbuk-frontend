@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const schema = z.object({
     password: z.string().nonempty("Informe a senha"),
     newPassword: z.string().nonempty("Informe a senha").min(6, "A senha deve ter no mínimo 6 caracteres").max(32, "A senha deve ter no máximo 32 caracteres"),
-    confirmPassword: z.string().nonempty("Confirmação de senha é obrigatório")
+    confirmPassword: z.string().nonempty("Informe a senha")
 }).refine((data) => data.newPassword === data.confirmPassword, {
     message: "Senhas não conferem",
     path: ["confirmPassword"]
