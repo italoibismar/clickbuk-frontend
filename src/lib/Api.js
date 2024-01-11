@@ -1,13 +1,13 @@
 import axios from "axios";
 import { sleep } from "./Utils";
 
-// export const api = axios.create({
-//     baseURL: "http://localhost:8001",
-// });
-
 export const api = axios.create({
-  baseURL: "https://clickbuk-api.vercel.app",
+    baseURL: "http://localhost:8001",
 });
+
+// export const api = axios.create({
+//   baseURL: "https://clickbuk-api.vercel.app",
+// });
 
 // // Adicione um interceptor para solicitações
 // api.interceptors.request.use(
