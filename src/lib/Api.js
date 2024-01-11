@@ -39,10 +39,20 @@ export const api = axios.create({
   //   }
   // );
 
-api.interceptors.response.use(async data => {
+  api.interceptors.response.use(async data => {
     await sleep(500);
-
     return data;
+}, error => {
+    const { config, code, request, response } = error;
+
+    // Se for um erro de timeout (504), você pode aumentar o tempo limite aqui
+    if (code === 'ECONNABORTED' && request && config && !config._isRetry) {
+        config._isRetry = true;
+        config.timeout = 10000;  // 10 segundos, por exemplo
+        return axios(config);
+    }
+
+    return Promise.reject(error);
 });
 
 // export const createSession = async (email, password) => {
