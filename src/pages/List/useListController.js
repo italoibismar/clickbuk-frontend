@@ -12,7 +12,7 @@ export function useListController() {
 
     const today = new Date();
 
-    const getMonth = today.getMonth();
+    const getMonth = (today.getMonth() + 1);
     const getYear = today.getFullYear();
 
     const [year, setYear] = useState(getYear);
