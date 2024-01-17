@@ -33,7 +33,7 @@ const TransactionMonthSlider = ({ month, setMonth}) => {
         onSlideChange={(swiper) => {
           setMonth(swiper.realIndex + 1)
         }}
-        initialSlide={month}
+        initialSlide={(month - 1)}
       >
         <SliderNavigation />
         {data.map((month, index) => (
