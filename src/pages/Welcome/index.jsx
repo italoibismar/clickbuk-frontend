@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { shootFireworks } from "../../lib/Confetti";
 import { Button } from "../../components/Button";
@@ -11,29 +11,23 @@ const Welcome = () => {
     const [validUrl, setValidUrl] = useState(null);
     const { id, token } = useParams();
     const navigate = useNavigate();
-    const runningOnce = useRef(true);
+
+    const verifyEmailUrl = async () => {
+        try {
+            const url = `/auth/${id}/verify/${token}`;
+            await api.get(url);
+            setValidUrl(true);
+            shootFireworks();
+        } catch (error) {
+            setValidUrl(false);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
-        if (runningOnce.current) {
-            runningOnce.current = false;
-            return;
-        }
-
-        const verifyEmailUrl = async () => {
-            try {
-                const url = `/auth/${id}/verify/${token}`;
-                await api.get(url);
-                setValidUrl(true); // Se a solicitação for bem-sucedida, definimos validUrl como true
-                shootFireworks();
-            } catch (error) {
-                setValidUrl(false); // Se houver um erro na solicitação, definimos validUrl como false
-            } finally {
-                setLoading(false);
-            }
-        };
-
         verifyEmailUrl();
-    }, [id, token]);
+    }, []); // Deixamos o array de dependências vazio para garantir que a chamada ocorra uma vez na montagem
 
     return (
         <>
