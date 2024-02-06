@@ -27,12 +27,10 @@ const Welcome = () => {
                 shootFireworks();
             } catch (error) {
                 setValidUrl(false);
-            } finally {
-                setLoading(false); // Define loading como false, independentemente do sucesso ou falha
             }
         };
 
-        verifyEmailUrl();
+        verifyEmailUrl().finally(() => setLoading(false)); // Agora setLoading(false) é chamado independentemente do resultado da solicitação
     }, [id, token]);
 
     return (
@@ -64,4 +62,5 @@ const Welcome = () => {
 };
 
 export default Welcome;
+
 
