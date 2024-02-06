@@ -4,7 +4,7 @@ import { shootFireworks } from "../../lib/Confetti";
 import { Button } from "../../components/Button";
 import Trophy from "../../assets/images/trophy.png";
 import { api } from "../../lib/Api";
-import { Spinner } from "@/src/components/Spinner";
+import { Spinner } from "../../components/Spinner";
 
 const Welcome = () => {
     const [validUrl, setValidUrl] = useState(null); // Mudança para null para indicar o estado de carregamento
