@@ -7,7 +7,8 @@ import { api } from "../../lib/Api";
 import { Spinner } from "../../components/Spinner";
 
 const Welcome = () => {
-    const [validUrl, setValidUrl] = useState(null); // Mudança para null para indicar o estado de carregamento
+    const [loading, setLoading] = useState(true);
+    const [validUrl, setValidUrl] = useState(null);
     const { id, token } = useParams();
     const navigate = useNavigate();
     const runningOnce = useRef(true);
@@ -26,6 +27,8 @@ const Welcome = () => {
                 shootFireworks();
             } catch (error) {
                 setValidUrl(false);
+            } finally {
+                setLoading(false); // Define loading como false, independentemente do sucesso ou falha
             }
         };
 
@@ -34,7 +37,7 @@ const Welcome = () => {
 
     return (
         <>
-            {validUrl === null ? ( // Adicionado um estado para indicar o carregamento
+            {loading ? (
                 <div className="bg-white z-50 fixed top-0 left-0 w-full h-full grid place-items-center">
                     <Spinner className="dark:text-white/[10%]" />
                 </div>
@@ -61,3 +64,4 @@ const Welcome = () => {
 };
 
 export default Welcome;
+
