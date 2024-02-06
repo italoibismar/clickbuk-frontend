@@ -23,14 +23,16 @@ const Welcome = () => {
             try {
                 const url = `/auth/${id}/verify/${token}`;
                 await api.get(url);
-                setValidUrl(true);
+                setValidUrl(true); // Se a solicitação for bem-sucedida, definimos validUrl como true
                 shootFireworks();
             } catch (error) {
-                setValidUrl(false);
+                setValidUrl(false); // Se houver um erro na solicitação, definimos validUrl como false
+            } finally {
+                setLoading(false);
             }
         };
 
-        verifyEmailUrl().finally(() => setLoading(false)); // Agora setLoading(false) é chamado independentemente do resultado da solicitação
+        verifyEmailUrl();
     }, [id, token]);
 
     return (
@@ -55,7 +57,7 @@ const Welcome = () => {
                     </div>
                 </div>
             ) : (
-                <p>404 Not Found</p>
+                <p>Token ou ID inválido</p>
             )}
         </>
     );
